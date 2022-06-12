@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/header'
+import Main from './components/main'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      image: undefined,
+    }
+  }
+
+  handleFileUpload = (file) => { 
+    this.setState({ image: file }); }
+
+  render() {
+    return (
+      <div className="App">
+        <Header onFileUpload={this.handleFileUpload}/>
+        <Main image={this.state.image}/>
+      </div>
+    );
+  }
 }
 
 export default App;
