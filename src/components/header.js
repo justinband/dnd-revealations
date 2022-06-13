@@ -18,7 +18,7 @@ class Header extends React.Component {
         }
     }
 
-    handleClear = () => { this.props.onFileUpload(undefined); }
+    handleClear = () => { this.props.handleClear(); }
 
     render () {
         return (

@@ -12,13 +12,15 @@ class App extends React.Component {
     }
   }
 
-  handleFileUpload = (file) => { 
-    this.setState({ image: file }); }
+  handleFileUpload = (file) => { this.setState({ image: file }); }
+  handleClear = (e) => {
+    this.setState({ image: undefined });
+  }
 
   render() {
     return (
       <div className="App">
-        <Header onFileUpload={this.handleFileUpload}/>
+        <Header onFileUpload={this.handleFileUpload} handleClear={this.handleClear}/>
         <Main image={this.state.image}/>
       </div>
     );
