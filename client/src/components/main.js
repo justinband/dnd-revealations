@@ -21,36 +21,6 @@ class Main extends React.Component {
         return image;
     }
 
-    handleMouseDown = (e) => {
-        this.isDrawing = true;
-        let { x, y } = e.target.getStage().getPointerPosition();
-        const newRect = {
-            x,
-            y,
-            width: 0,
-            height: 0,
-            fill: "lightblue",
-            stroke: "blue",
-            key: this.currKey
-        };
-        let rectangles = [...this.state.rectangles, newRect];
-        this.setState({ rectangles });
-        this.currKey++;
-    }
-
-    handleMouseUp = (e) => { this.isDrawing = false; }
-
-    handleMouseMove = (e) => {
-        if(this.isDrawing) {
-            let { x, y } = e.target.getStage().getPointerPosition();
-            let currRect = this.state.rectangles[this.state.rectangles.length - 1];
-            currRect.width = x - currRect.x;
-            currRect.height = y - currRect.y;
-            
-            this.setState({ rectangles: this.state.rectangles });
-        }
-    }
-
     render() {
         // if(this.props.image) {
         // create a image element to be used in the Layer
